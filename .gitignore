@@ -1,0 +1,7 @@
+#folders
+/venv
+/data
+
+#file types
+*.pycache
+*.DS_Store
