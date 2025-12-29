@@ -1,0 +1,51 @@
+timestamp,experiment_name,model,dataset,method,accuracy,precision,recall,f1,notes
+2025-12-29 01:08:34,vit_b_16_baseline_asdid,vit_b_16,ASDID,baseline,0.9764,0.9764,0.9762,0.9762,In-domain test on ASDID
+2025-12-29 01:08:48,vit_b_16_baseline_mh,vit_b_16,MH,baseline,0.7297,0.6738,0.6827,0.6709,Cross-domain baseline without TTA
+2025-12-29 11:02:18,convnext_tiny_baseline_asdid,convnext_tiny,ASDID,baseline,0.9917,0.9914,0.9918,0.9916,In-domain test on ASDID
+2025-12-29 11:02:54,convnext_tiny_baseline_mh,convnext_tiny,MH,baseline,0.7838,0.7038,0.7621,0.7250,Cross-domain baseline without TTA
+2025-12-29 11:07:54,convnext_tiny_tta_bn_pseudo,convnext_tiny,MH,bn_pseudo,0.6054,0.3371,0.4049,0.3632,F1 gain: -0.3618
+2025-12-29 11:08:02,vit_b_16_tta_bn_pseudo,vit_b_16,MH,bn_pseudo,0.7297,0.6738,0.6827,0.6709,F1 gain: 0.0000
+2025-12-29 11:09:00,convnext_tiny_tta_memo,convnext_tiny,MH,memo,0.7892,0.7018,0.7533,0.7223,F1 gain: -0.0027
+2025-12-29 11:09:05,vit_b_16_tta_memo,vit_b_16,MH,memo,0.7297,0.6738,0.6827,0.6709,F1 gain: 0.0000
+2025-12-29 11:10:05,convnext_tiny_tta_tent,convnext_tiny,MH,tent,0.8108,0.7184,0.7635,0.7381,F1 gain: 0.0131
+2025-12-29 11:10:08,vit_b_16_tta_tent,vit_b_16,MH,tent,0.7297,0.6738,0.6827,0.6709,F1 gain: 0.0000
+2025-12-29 11:15:11,convnext_tiny_tta_eata,convnext_tiny,MH,eata,0.8162,0.7232,0.7660,0.7422,F1 gain: 0.0173
+2025-12-29 11:15:25,vit_b_16_tta_eata,vit_b_16,MH,eata,0.7297,0.6738,0.6827,0.6709,F1 gain: 0.0000
+2025-12-29 11:16:40,convnext_tiny_tta_ensemble,convnext_tiny,MH,ensemble,0.8162,0.7232,0.7660,0.7422,"Ensemble of EATA + TENT, F1 gain: 0.0173"
+2025-12-29 11:16:45,vit_b_16_tta_ensemble,vit_b_16,MH,ensemble,0.7297,0.6738,0.6827,0.6709,"Ensemble of BN+Pseudo + MEMO, F1 gain: 0.0000"
+2025-12-29 12:11:17,convnext_tiny_tta_bn_pseudo,convnext_tiny,MH,bn_pseudo,0.7081,0.2360,0.3333,0.2764,F1 gain: -0.4486
+2025-12-29 12:38:05,convnext_tiny_tta_bn_pseudo,convnext_tiny,MH,bn_pseudo,0.8649,0.6040,0.6641,0.6320,F1 gain: -0.0930
+2025-12-29 12:50:38,convnext_tiny_tta_memo,convnext_tiny,MH,memo,0.7838,0.7038,0.7621,0.7250,F1 gain: 0.0000
+2025-12-29 12:57:21,vit_b_16_tta_bn_pseudo,vit_b_16,MH,bn_pseudo,0.8216,0.5441,0.6266,0.5824,F1 gain: -0.0885
+2025-12-29 12:57:41,convnext_tiny_tta_tent,convnext_tiny,MH,tent,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0863
+2025-12-29 13:13:11,convnext_tiny_tta_bn_pseudo,convnext_tiny,MH,bn_pseudo,0.8541,0.9097,0.6704,0.6405,F1 gain: -0.0845
+2025-12-29 13:15:10,vit_b_16_tta_bn_pseudo,vit_b_16,MH,bn_pseudo,0.7946,0.5220,0.5968,0.5568,F1 gain: -0.1141
+2025-12-29 13:18:26,convnext_tiny_tta_memo,convnext_tiny,MH,memo,0.7838,0.7038,0.7621,0.7250,F1 gain: 0.0000
+2025-12-29 13:20:56,vit_b_16_tta_memo,vit_b_16,MH,memo,0.8541,0.6115,0.6333,0.6190,F1 gain: -0.0519
+2025-12-29 13:23:42,convnext_tiny_tta_tent,convnext_tiny,MH,tent,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0863
+2025-12-29 13:26:45,vit_b_16_tta_tent,vit_b_16,MH,tent,0.8649,0.6132,0.6556,0.6320,F1 gain: -0.0390
+2025-12-29 13:30:07,convnext_tiny_tta_eata,convnext_tiny,MH,eata,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0863
+2025-12-29 13:33:37,vit_b_16_tta_eata,vit_b_16,MH,eata,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0322
+2025-12-29 13:51:19,convnext_tiny_tta_ensemble,convnext_tiny,MH,ensemble,0.8378,0.7340,0.7195,0.7102,"Ensemble of MEMO + BN+Pseudo, F1 gain: -0.0148"
+2025-12-29 13:51:30,vit_b_16_tta_ensemble,vit_b_16,MH,ensemble,0.8703,0.6151,0.6667,0.6387,"Ensemble of EATA + TENT, F1 gain: -0.0322"
+2025-12-29 13:51:47,convnext_tiny_tta_ensemble,convnext_tiny,MH,ensemble,0.8378,0.7340,0.7195,0.7102,"Ensemble of MEMO + BN+Pseudo, F1 gain: -0.0148"
+2025-12-29 13:51:53,vit_b_16_tta_ensemble,vit_b_16,MH,ensemble,0.8703,0.6151,0.6667,0.6387,"Ensemble of EATA + TENT, F1 gain: -0.0322"
+2025-12-29 14:03:25,convnext_tiny_tta_bn_pseudo,convnext_tiny,MH,bn_pseudo,0.8541,0.9097,0.6704,0.6405,F1 gain: -0.0845
+2025-12-29 14:03:50,vit_b_16_tta_bn_pseudo,vit_b_16,MH,bn_pseudo,0.7784,0.5014,0.5377,0.5169,F1 gain: -0.1540
+2025-12-29 14:08:37,convnext_tiny_tta_memo,convnext_tiny,MH,memo,0.7838,0.7038,0.7621,0.7250,F1 gain: 0.0000
+2025-12-29 14:09:36,vit_b_16_tta_memo,vit_b_16,MH,memo,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0322
+2025-12-29 14:13:51,convnext_tiny_tta_tent,convnext_tiny,MH,tent,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0863
+2025-12-29 14:15:21,vit_b_16_tta_tent,vit_b_16,MH,tent,0.8000,0.6531,0.6477,0.6491,F1 gain: -0.0218
+2025-12-29 14:20:15,convnext_tiny_tta_eata,convnext_tiny,MH,eata,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0863
+2025-12-29 14:20:28,convnext_tiny_tta_ensemble,convnext_tiny,MH,ensemble,0.8432,0.7422,0.7220,0.7162,"Ensemble of MEMO + BN+Pseudo, F1 gain: -0.0088"
+2025-12-29 14:22:22,vit_b_16_tta_eata,vit_b_16,MH,eata,0.8703,0.6151,0.6667,0.6387,F1 gain: -0.0322
+2025-12-29 14:22:36,vit_b_16_tta_ensemble,vit_b_16,MH,ensemble,0.8486,0.6140,0.6479,0.6292,"Ensemble of TENT + MEMO, F1 gain: -0.0417"
+2025-12-29 14:59:30,vit_b_16_tta_bn_pseudo,vit_b_16,MH,bn_pseudo,0.7784,0.5660,0.4863,0.4953,F1 gain: -0.1756
+2025-12-29 15:05:57,vit_b_16_tta_memo,vit_b_16,MH,memo,0.4000,0.3674,0.4453,0.2833,F1 gain: -0.3877
+2025-12-29 15:30:03,resnet50_baseline_asdid,resnet50,ASDID,baseline,0.9806,0.9802,0.9806,0.9803,In-domain test on ASDID
+2025-12-29 15:30:34,resnet50_baseline_mh,resnet50,MH,baseline,0.7351,0.7102,0.7732,0.7151,Cross-domain baseline without TTA
+2025-12-29 15:39:41,vit_b_16_tta_bn_pseudo,vit_b_16,MH,bn_pseudo,0.6973,0.6670,0.6901,0.6623,F1 gain: -0.0086
+2025-12-29 15:46:25,resnet50_tta_bn_pseudo,resnet50,MH,bn_pseudo,0.8000,0.7074,0.8038,0.7414,F1 gain: 0.0264
+2025-12-29 15:48:13,vit_b_16_tta_memo,vit_b_16,MH,memo,0.2378,0.1617,0.5278,0.2466,F1 gain: -0.4243
+2025-12-29 15:51:42,resnet50_tta_memo,resnet50,MH,memo,0.7405,0.6648,0.7758,0.6933,F1 gain: -0.0218
+2025-12-29 15:59:50,resnet50_tta_eata,resnet50,MH,eata,0.2919,0.3849,0.6667,0.4227,F1 gain: -0.2924
