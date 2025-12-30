@@ -66,19 +66,40 @@ def get_weighted_sampler(dataset, class_weights):
     return sampler
 
 
-def get_dataloaders(dataset_name, data_root, batch_size=32, train_val_test_split=(0.7, 0.15, 0.15), seed=21):
+def get_dataloaders(dataset_name, data_root, batch_size=32, train_val_test_split=(0.7, 0.15, 0.15), 
+                    seed=21, train_transform=None, test_transform=None):
     """
     Creates DataLoaders for train, val, and test splits.
-    Returns (train_loader, val_loader, test_loader, dataset, train_indices, val_indices, test_indices)
-    """
-    # Standard ConNeXt/Swin/ResNet transforms
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
     
-    dataset = SoybeanDataset(data_root, dataset_name, transform=transform)
+    Args:
+        dataset_name: Name of the dataset ('ASDID', 'MH', etc.)
+        data_root: Root directory of the dataset
+        batch_size: Batch size for dataloaders
+        train_val_test_split: Tuple of (train, val, test) split ratios
+        seed: Random seed for reproducibility
+        train_transform: Custom transforms for training data (if None, uses default)
+        test_transform: Custom transforms for val/test data (if None, uses default)
+    
+    Returns:
+        (train_loader, val_loader, test_loader, dataset, train_indices, val_indices, test_indices)
+    """
+    # Standard ConNeXt/Swin/ResNet transforms (default)
+    if train_transform is None:
+        train_transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
+    
+    if test_transform is None:
+        test_transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
+    
+    # Create dataset with test transform initially (for splitting)
+    dataset = SoybeanDataset(data_root, dataset_name, transform=test_transform)
     
     # Calculate split sizes
     total_size = len(dataset)
@@ -89,6 +110,14 @@ def get_dataloaders(dataset_name, data_root, batch_size=32, train_val_test_split
     # Deterministic split
     generator = torch.Generator().manual_seed(seed)
     train_ds, val_ds, test_ds = random_split(dataset, [train_size, val_size, test_size], generator=generator)
+    
+    # Apply train_transform to training subset if different from test_transform
+    if train_transform is not test_transform:
+        # Create a new dataset with train transforms
+        train_dataset = SoybeanDataset(data_root, dataset_name, transform=train_transform)
+        # Use Subset with train indices on the train_dataset
+        from torch.utils.data import Subset
+        train_ds = Subset(train_dataset, train_ds.indices)
     
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False)
